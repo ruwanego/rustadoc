@@ -1,0 +1,11 @@
+[package]
+name = "rustadoc"
+version = "0.1.0"
+authors = ["Ruwan Egodawatte <ruwanego@gmail.com>"]
+edition = "2018"
+description = "A fast, open source AsciiDoc processor and publishing toolchain, written in Rust."
+homepage = "https://github.com/ruwanego/rustadoc"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
