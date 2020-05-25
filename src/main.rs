@@ -33,7 +33,7 @@ fn parse_asciidoc_file(_filename: &str) {
         // Condensed way: For each line, unwrap it
         let line_contents = line.unwrap();
 
-        let mut first_char: Vec<char>  = line_contents.chars().take(1).collect();
+        let mut first_char: Vec<char> = line_contents.chars().take(1).collect();
 
         let mut output_line = String::new();
         let slice = &line_contents.to_string();
@@ -52,18 +52,17 @@ fn parse_asciidoc_file(_filename: &str) {
                 _htag = true;
                 output_line.push_str("<h1>");
                 output_line.push_str(&slice[2..]); // Get all but the first two characters
-            },
+            }
             _ => {
                 if !_ptag {
                     _ptag = true;
                     output_line.push_str("<p>");
                 }
-
                 output_line.push_str(&slice);
             }
         };
 
-        // At the very end, check if any of the tag bools are still open. If so,
+        // At the very end, check if any of the tag `bool`s are still open. If so,
         // close them.
 
         // if the paragraph tag is open, close it and push a closing HTML tag.
@@ -79,10 +78,13 @@ fn parse_asciidoc_file(_filename: &str) {
         }
 
         //  avoid pushing blank lines
-        if output_line != "<p></p>\n".to_owned() {
+        if output_line != "<p></p>\n" {
             tokens.push(output_line);
         }
     } // end of "for line in reader.lines()" block
+
+    // Create an output file based on the input file, minus ".md"
+    let mut _filename2: &str = &_filename[.._filename.len() - 3];
 
     for token in &tokens {
         println!("{}", token)
@@ -100,7 +102,9 @@ fn print_short_banner() {
 /// Returns the usage string.
 ///
 fn usage() -> String {
-    return String::from("rustadoc <somefile>.adoc");
+    // NOTE: there's no semicolon at the end
+    // so the value is returned
+    String::from("rustadoc <somefile>.adoc")
 }
 
 ///
@@ -125,7 +129,7 @@ fn get_title() -> String {
     the_title.push_str(env!("CARGO_PKG_VERSION"));
     the_title.push_str("), ");
     the_title.push_str(env!("CARGO_PKG_DESCRIPTION"));
-    return the_title;
+    the_title
 }
 
 fn main() {

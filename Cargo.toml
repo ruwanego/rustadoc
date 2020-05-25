@@ -6,6 +6,4 @@ edition = "2018"
 description = "A fast, open source AsciiDoc processor and publishing toolchain, written in Rust."
 homepage = "https://github.com/ruwanego/rustadoc"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
