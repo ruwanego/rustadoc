@@ -4,3 +4,6 @@ Cargo.lock
 
 # Generated files, Added by cargo
 /target
+
+# VSCode
+.vscode/*
